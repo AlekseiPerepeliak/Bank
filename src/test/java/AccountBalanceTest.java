@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 
 public class AccountBalanceTest {
 
-    String USERNAME = "";
-    String USER_PASSWORD = "";
-    String AUTHENTICATION_CODE = "";
+    String USERNAME = new BaseTestParams().username;
+    String USER_PASSWORD = new BaseTestParams().user_pass;
+    int AUTHENTICATION_CODE = new BaseTestParams().authentication_code;
 
     @BeforeClass
     public void browser() {

@@ -4,17 +4,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BankLoginAutentificationPage {
 
-    //code  number is 0000
     @FindBy(id = "otp-code")
     WebElement optCodeField;
 
     @FindBy(id = "login-otp-button")
     WebElement loginOPTbutton;
 
-    public BankLoginAutentificationPage enterAuthenticationCode(String code) {
-        //TODO How to handle integer with Send Keys()
+    public BankLoginAutentificationPage enterAuthenticationCode(int code) {
         optCodeField.clear();
-        optCodeField.sendKeys(code);
+        optCodeField.sendKeys(String.valueOf(code));
         return PageFactory.initElements(BrowserManager.browser, BankLoginAutentificationPage.class);
     }
 

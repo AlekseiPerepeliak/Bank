@@ -10,9 +10,9 @@ public class CurrencyExchangeTest {
     String BUY_AMOUNT = "100";
     String RUB = "10001";
 
-    String USERNAME = "";
-    String USER_PASSWORD = "";
-    String AUTHENTICATION_CODE = "";
+    String USERNAME = new BaseTestParams().username;
+    String USER_PASSWORD = new BaseTestParams().user_pass;
+    int AUTHENTICATION_CODE = new BaseTestParams().authentication_code;
     String PAYMENT_DETAILS_TEXT = "Transaction USD To RUB!";
 
     @BeforeClass

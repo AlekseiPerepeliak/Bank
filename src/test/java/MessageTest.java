@@ -11,9 +11,9 @@ public class MessageTest {
     }
 
     String MESSAGE_TEXT = "This is the test message!";
-    String USERNAME = "";
-    String USER_PASSWORD = "";
-    String AUTHENTICATION_CODE = "";
+    String USERNAME = new BaseTestParams().username;
+    String USER_PASSWORD = new BaseTestParams().user_pass;
+    int AUTHENTICATION_CODE = new BaseTestParams().authentication_code;
 
     @Test
     public void sendNewMessage() {
