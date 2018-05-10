@@ -1,9 +1,13 @@
 import Framework.BaseTestParams;
 import Framework.BrowserManager;
+import Framework.CSVDataProvider;
 import Framework.UserActions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.Iterator;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
@@ -27,6 +31,11 @@ public class BankTest {
         BrowserManager.openBrowser();
     }
 
+    @DataProvider(name = "csv")
+    public Iterator<Object[]> searchFromCsv() {
+        return CSVDataProvider.loadDataFromFile();
+    }
+
     @Test
     public void checkAccountBalance() {
         double closingBalance =
@@ -34,8 +43,7 @@ public class BankTest {
                         .openAccountsStatement()
                         .clickQueryBalanceButton()
                         .getClosingBalance();
-//        assertTrue((closingBalance > 0), "Balance is negative");
-        assertTrue((closingBalance < 0), "Balance is negative");//TODO Change assertion x<0 to x>0
+        assertTrue((closingBalance > 0), "Balance is negative");
 
     }
 
@@ -61,16 +69,16 @@ public class BankTest {
         assertTrue(accountOwnerName.contains("Королёва Ольга"), "Username is not Королёва Ольга");
     }
 
-    @Test
-    public void sendNewMessage() {
+    @Test(dataProvider = "csv")
+    public void sendNewMessage(String message) {
         String actualMessageTest
                 = userActions.loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
                 .clickMessageIcon()
                 .clickNewMessageButton()
-                .enterMessageText(messageText)
+                .enterMessageText(message)
                 .clickSendMessageButton()
                 .getAllMessagesText();
-        assertTrue(actualMessageTest.contains(messageText), "Message was not found");
+        assertTrue(actualMessageTest.contains(message), "Message was not found");
     }
 
 
