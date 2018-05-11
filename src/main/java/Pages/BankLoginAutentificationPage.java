@@ -1,6 +1,7 @@
 package Pages;
 
 import Framework.BrowserManager;
+import Framework.Utils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,7 +21,8 @@ public class BankLoginAutentificationPage {
     }
 
     public BankHomePage clickOPTloginButton() {
-        loginOPTbutton.click();
+        Utils.waitForElementPresentById(loginOPTbutton);
+        Utils.clickWithJavaScript("login-otp-button");
         return PageFactory.initElements(BrowserManager.browser, BankHomePage.class);
     }
 }

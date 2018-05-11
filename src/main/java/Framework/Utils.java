@@ -1,5 +1,6 @@
 package Framework;
 
+import Pages.BankLoginAutentificationPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -17,14 +18,16 @@ public class Utils {
         return PageFactory.initElements(BrowserManager.browser, Actions.class);
     }
 
-    public void waitForElementPresentById(WebElement elementId) {
+    public static final Utils waitForElementPresentById(WebElement elementId) {
         new WebDriverWait(BrowserManager.browser, 10)
                 .until(ExpectedConditions.presenceOfElementLocated((By)elementId));
+        return PageFactory.initElements(BrowserManager.browser, Utils.class);
+    }
+    public static final Utils clickWithJavaScript(String id){
+        WebElement element = BrowserManager.browser.findElement(By.id(id));
+        JavascriptExecutor executor = (JavascriptExecutor)BrowserManager.browser;
+        executor.executeScript("arguments[0].click();", element);
+        return PageFactory.initElements(BrowserManager.browser, Utils.class);
     }
 
-//    public void clickWithJavaScript(WebElement element){
-//        WebElement element = BrowserManager.browser.findElement(By.id("Value"));
-//        JavascriptExecutor executor = (JavascriptExecutor) BrowserManager.browser;
-//        executor.executeScript(arguments[0].click(), executor, element);
-//    }
 }
