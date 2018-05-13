@@ -5,7 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserActions {
 
-    public BankHomePage loginWithUser(String name, String pass, String authenticationCode){
+    public static BankHomePage loginWithUser(String name, String pass, String authenticationCode){
         Navigation
                 .openLoginPage()
                 .enterUsersCredentials(name, pass)

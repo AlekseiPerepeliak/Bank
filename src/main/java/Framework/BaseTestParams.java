@@ -2,7 +2,8 @@ package Framework;
 
 public class BaseTestParams {
 
-    public static final String username = "demo";
-    public static final String user_pass = "demo";
-    public static final String authentication_code = "0000";
-}
+    public static final String USERNAME = "demo";
+    public static final String USER_PASSWORD = "demo";
+    public static final String AUTHENTICATION_CODE = "0000";
+
+    }

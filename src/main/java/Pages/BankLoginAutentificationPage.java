@@ -21,8 +21,8 @@ public class BankLoginAutentificationPage {
     }
 
     public BankHomePage clickOPTloginButton() {
-        Utils.waitForElementPresentById(loginOPTbutton);
-        Utils.clickWithJavaScript("login-otp-button");
+        Utils.WAIT_FOR_ELEMENT_PRESENT_BY_ID(loginOPTbutton);
+        Utils.CLICK_WITH_JAVA_SCRIPT(loginOPTbutton);
         return PageFactory.initElements(BrowserManager.browser, BankHomePage.class);
     }
 }

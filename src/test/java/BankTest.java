@@ -12,18 +12,16 @@ import java.util.Iterator;
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class BankTest {
-    String USERNAME = BaseTestParams.username;
-    String USER_PASSWORD = BaseTestParams.user_pass;
-    String AUTHENTICATION_CODE = BaseTestParams.authentication_code;
+public class BankTest extends BaseTestParams{
+//    String USERNAME = BaseTestParams.username;
+//    String USER_PASSWORD = BaseTestParams.user_pass;
+//    String AUTHENTICATION_CODE = BaseTestParams.authentication_code;
 
     String usd = "10013";
     String buyAmount = "100";
     String rub = "10001";
     String paymentDetailsText = "Transaction usd To rub!";
     String messageText = "This is the test message!";
-
-    UserActions userActions = new UserActions();
 
 
     @BeforeClass
@@ -39,7 +37,7 @@ public class BankTest {
     @Test
     public void checkAccountBalance() {
         double closingBalance =
-                userActions.loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
+                UserActions.loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
                         .openAccountsStatement()
                         .clickQueryBalanceButton()
                         .getClosingBalance();
@@ -50,7 +48,7 @@ public class BankTest {
     @Test
     public void checkCurrencyExchangeUSDtoRUB() {
         String actualResultAlertText =
-                userActions.loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
+                UserActions.loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
                         .clickCurrencyExchange()
                         .selectFromAccount(usd)
                         .enterBuyingAmount(buyAmount)
@@ -63,7 +61,7 @@ public class BankTest {
 
     @Test
     public void loginAsRegisteredUser() {
-        String accountOwnerName = userActions
+        String accountOwnerName = UserActions
                 .loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
                 .getUserName();
         assertTrue(accountOwnerName.contains("Королёва Ольга"), "Username is not Королёва Ольга");
@@ -72,7 +70,7 @@ public class BankTest {
     @Test(dataProvider = "csv")
     public void sendNewMessage(String message) {
         String actualMessageTest
-                = userActions.loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
+                = UserActions.loginWithUser(USERNAME, USER_PASSWORD, AUTHENTICATION_CODE)
                 .clickMessageIcon()
                 .clickNewMessageButton()
                 .enterMessageText(message)

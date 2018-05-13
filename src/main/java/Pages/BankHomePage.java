@@ -3,7 +3,6 @@ package Pages;
 import Framework.BrowserManager;
 import Framework.Utils;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -37,7 +36,7 @@ public class BankHomePage {
     public AccountsPage openAccountsStatement() {
 //        Actions actions = new Actions(BrowserManager.browser);
 //        actions.moveToElement(accountsTab).build().perform();
-        Utils.mouseHoverElement(accountsTab);
+        Utils.MOUSE_HOVER_ELEMENT(accountsTab);
         statements.click();
         return PageFactory.initElements(BrowserManager.browser, AccountsPage.class);
     }
@@ -45,7 +44,7 @@ public class BankHomePage {
     public BankCurrencyExchangePage clickCurrencyExchange() {
 //        Actions actions = new Actions(BrowserManager.browser);
 //        actions.moveToElement(cuurrencyTab).build().perform();
-        Utils.mouseHoverElement(cuurrencyTab);
+        Utils.MOUSE_HOVER_ELEMENT(cuurrencyTab);
         currencies.click();
         return PageFactory.initElements(BrowserManager.browser, BankCurrencyExchangePage.class);
     }

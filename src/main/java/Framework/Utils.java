@@ -12,21 +12,21 @@ import sun.awt.windows.WEmbeddedFrame;
 
 public class Utils {
 
-    public static final Actions mouseHoverElement(WebElement element) {
+    public static final Actions MOUSE_HOVER_ELEMENT(WebElement element) {
         Actions actions = new Actions(BrowserManager.browser);
         actions.moveToElement(element).build().perform();
         return PageFactory.initElements(BrowserManager.browser, Actions.class);
     }
 
-    public static final Utils waitForElementPresentById(WebElement elementId) {
+    public static final Utils WAIT_FOR_ELEMENT_PRESENT_BY_ID(WebElement elementId) {
         new WebDriverWait(BrowserManager.browser, 10)
                 .until(ExpectedConditions.presenceOfElementLocated((By)elementId));
         return PageFactory.initElements(BrowserManager.browser, Utils.class);
     }
-    public static final Utils clickWithJavaScript(String id){
-        WebElement element = BrowserManager.browser.findElement(By.id(id));
+    public static final Utils CLICK_WITH_JAVA_SCRIPT(WebElement id){
+//        WebElement element = BrowserManager.browser.findElement(By.id(id));
         JavascriptExecutor executor = (JavascriptExecutor)BrowserManager.browser;
-        executor.executeScript("arguments[0].click();", element);
+        executor.executeScript("arguments[0].click();", id);
         return PageFactory.initElements(BrowserManager.browser, Utils.class);
     }
 
