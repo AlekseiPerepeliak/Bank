@@ -36,7 +36,7 @@ public class BankHomePage {
     public AccountsPage openAccountsStatement() {
 //        Actions actions = new Actions(BrowserManager.browser);
 //        actions.moveToElement(accountsTab).build().perform();
-        Utils.MOUSE_HOVER_ELEMENT(accountsTab);
+        Utils.mouseHoverElement(accountsTab);
         statements.click();
         return PageFactory.initElements(BrowserManager.browser, AccountsPage.class);
     }
@@ -44,7 +44,7 @@ public class BankHomePage {
     public BankCurrencyExchangePage clickCurrencyExchange() {
 //        Actions actions = new Actions(BrowserManager.browser);
 //        actions.moveToElement(cuurrencyTab).build().perform();
-        Utils.MOUSE_HOVER_ELEMENT(cuurrencyTab);
+        Utils.mouseHoverElement(cuurrencyTab);
         currencies.click();
         return PageFactory.initElements(BrowserManager.browser, BankCurrencyExchangePage.class);
     }
