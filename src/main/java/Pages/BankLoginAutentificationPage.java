@@ -22,7 +22,7 @@ public class BankLoginAutentificationPage {
 
     public BankHomePage clickOPTloginButton() {
         Utils.WAIT_FOR_ELEMENT_PRESENT_BY_ID(loginOPTbutton);
-        Utils.CLICK_WITH_JAVA_SCRIPT(loginOPTbutton);
+        Utils.CLICK_WIgTH_JAVA_SCRIPT(loginOPTbutton);
         return PageFactory.initElements(BrowserManager.browser, BankHomePage.class);
     }
 }

@@ -13,15 +13,11 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class BankTest extends BaseTestParams{
-//    String USERNAME = BaseTestParams.username;
-//    String USER_PASSWORD = BaseTestParams.user_pass;
-//    String AUTHENTICATION_CODE = BaseTestParams.authentication_code;
 
     String usd = "10013";
     String buyAmount = "100";
     String rub = "10001";
     String paymentDetailsText = "Transaction usd To rub!";
-    String messageText = "This is the test message!";
 
 
     @BeforeClass
@@ -56,7 +52,7 @@ public class BankTest extends BaseTestParams{
                         .enterPaymentDetails(paymentDetailsText)
                         .clickCalculateButton()
                         .clickExchangeConfirmButton().getExchangeAlertSuccessText();
-        assertEquals("Alert does not successful!", actualResultAlertText, "Payment transferred successfully");
+        assertEquals("Alert does not successful!", "Payment transferred successfully", actualResultAlertText);
     }
 
     @Test

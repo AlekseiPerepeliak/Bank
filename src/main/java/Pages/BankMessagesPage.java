@@ -37,7 +37,7 @@ public class BankMessagesPage {
     }
 
     public String getAllMessagesText() {
-        new Utils().WAIT_FOR_ELEMENT_PRESENT_BY_ID(allMessageText);
+        Utils.WAIT_FOR_ELEMENT_PRESENT_BY_ID(allMessageText);
         return allMessageText.getText();
 
     }
